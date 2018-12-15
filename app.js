@@ -12,3 +12,25 @@ var server = app.listen(app.get('port'), function() {
   var port = server.address().port;
   console.log('Magic happens on port ' + port);
 });
+
+var matrixx = require("./Moduls/matrix");
+
+console.log(matrixx);
+
+var time = frameRate(5);
+
+function frameRate ( frameRate )
+{
+  return 1000 / frameRate;
+}
+
+function draw ()
+{
+  for(var i in grassArr)
+  {
+    grassArr[i].mul();
+  }
+
+// socket.emit("update matrix",matrixx);
+}
+setInterval( draw,time );
