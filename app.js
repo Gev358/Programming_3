@@ -1,21 +1,29 @@
 var express = require('express');
-var path = require('path');
 var app = express();
 
-// Define the port to run on
-app.set('port', process.env.PORT || 3000);
+var server = require('http').Server(app);
 
-app.use(express.static(path.join(__dirname, 'public')));
+var io = require('socket.io')(server);
 
-// Listen for requests
-var server = app.listen(app.get('port'), function() {
-  var port = server.address().port;
-  console.log('Magic happens on port ' + port);
+
+app.use(express.static("./public"));
+
+app.get('/', function (req, res) {
+   res.redirect('index.html');
 });
+
+server.listen(3000);
 
 var matrixx = require("./Moduls/matrix");
 
 console.log(matrixx);
+
+
+io.on('connection', function (socket) {
+
+});
+
+
 
 var time = frameRate(5);
 
@@ -26,10 +34,10 @@ function frameRate ( frameRate )
 
 function draw ()
 {
-  for(var i in grassArr)
-  {
-    grassArr[i].mul();
-  }
+  // for(var i in grassArr)
+  // {
+  //   grassArr[i].mul();
+  // }
 
 // socket.emit("update matrix",matrixx);
 }

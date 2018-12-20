@@ -3,6 +3,17 @@ var chap = 30;
 var chap1 = 30;
 var gishatichQanak =10;
 
+
+function setup() {
+
+    createCanvas(matrix.length * side, matrix[0].length * side);
+    background("grey");
+    frameRate(0);
+    console.log(veracnox1);
+}
+
+
+
 for (var i = 0; i < chap; i++) {
     matrix[i] = [];
     for (var j = 0; j < chap1; j++) {
@@ -28,41 +39,7 @@ var grassEaterArr = [];
 var gishatichArr = [];
 var kendaniArr = [];
 var veracnox1;
-function setup() {
 
-    createCanvas(matrix.length * side, matrix[0].length * side);
-    background("grey");
-    frameRate(5);
-
-
-    for (var y = 0; y < matrix.length; ++y) {
-        for (var x = 0; x < matrix[y].length; ++x) {
-            if (matrix[y][x] == 1) {
-                var gr = new Grass(x, y, 1);
-                grassArr.push(gr);
-            }
-            else if (matrix[y][x] == 2) {
-                var gr1 = new GrassEater(x, y, 2);
-                grassEaterArr.push(gr1);
-            }
-            else if (matrix[y][x] == 3) {
-                var gr2 = new Gishatich(x, y, 3);
-                gishatichArr.push(gr2);
-            }
-            else if (matrix[y][x] == 4) {
-                var gr3 = new kendani(x, y, 4);
-                kendaniArr.push(gr3);
-            }
-            else if (matrix[y][x] == 5) {
-                veracnox1 = new veracnox(x, y, 5);
-                 
-            }
-        }
-
-
-    }
-    console.log(veracnox1);
-}
 
 function draw() {
     for (var y = 0; y < matrix.length; y++) {
@@ -101,27 +78,25 @@ function draw() {
 
     }
     for (var i in gishatichArr) {
- gishatichArr[i].eat();
+ gishatichArr[i].eat(matrix);
 
     }
     for (var i in grassArr) {
-        grassArr[i].mul();
-
+        grassArr[i].mul(matrix);
     }
+
     for (var i in grassEaterArr) {
-       grassEaterArr[i].eat();
-
+       grassEaterArr[i].eat(matrix);
     }
+
     for (var i in kendaniArr) {
-       kendaniArr[i].krvel();
-
+       kendaniArr[i].krvel(matrix);
     }
+
     for (var i in kendaniArr) {
-        kendaniArr[i].eat();
+        kendaniArr[i].eat(matrix);
     }
 
-
-
-    veracnox1.eat();
+    veracnox1.eat(matrix);
 }
 
