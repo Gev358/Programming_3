@@ -11,6 +11,28 @@ var kendaniArr = [];
 var matrix = [];
 var chap = 30;
 var chap1 = 30;
+
+var gishatichQanak = 10;
+
+for (var i = 0; i < chap; i++) {
+    matrix[i] = [];
+    for (var j = 0; j < chap1; j++) {
+        matrix[i][j] = Math.round(Math.random() * 4);
+
+    }
+}
+matrix[0][0] = 5;
+
+
+while (gishatichQanak > 0) {
+    var x = Math.round(Math.random() * (chap - 1));
+    var y = Math.round(Math.random() * (chap - 1));
+
+    if (matrix[y][x] == 0) {
+        matrix[y][x] = 3;
+        gishatichQanak--;
+    }
+}
 //var gishatichQanak =10;
 
 for (var i = 0; i < chap; i++) {

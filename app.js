@@ -41,4 +41,35 @@ function draw ()
 
 // socket.emit("update matrix",matrixx);
 }
-setInterval( draw,time );
+var gishatichArr = [];
+var grassArr = [];
+var kendaniArr = [];
+var grassEaterArr = [];
+var matrix = [];
+
+
+
+setInterval( function(){
+  for (var i in gishatichArr) {
+    gishatichArr[i].eat(matrix);
+   
+       }
+       for (var i in grassArr) {
+           grassArr[i].mul(matrix);
+       }
+   
+       for (var i in grassEaterArr) {
+          grassEaterArr[i].eat(matrix);
+       }
+   
+       for (var i in kendaniArr) {
+          kendaniArr[i].krvel(matrix);
+       }
+   
+       for (var i in kendaniArr) {
+           kendaniArr[i].eat(matrix);
+       }
+   
+       veracnox1.eat(matrix);
+      socket.emit("redraw matrix", matrixx );
+},time );
